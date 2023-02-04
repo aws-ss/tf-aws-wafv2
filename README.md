@@ -1,0 +1,51 @@
+# tf-aws-cloudtrail
+
+A Terraform module that creates an AWS WAFv2 (using YAML).
+
+## Examples
+
+* See [Example Codes](https://github.com/aws-ss/tf-aws-wafv2/tree/main/examples) for full details.
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_wafv2_web_acl.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_default_action"></a> [default\_action](#input\_default\_action) | (Required) Action to perform if none of the rules contained in the WebACL match. | `list(string)` | n/a | yes |
+| <a name="input_description"></a> [description](#input\_description) | (Optional) Friendly description of the WebACL. | `list(string)` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | (Required) Friendly name of the WebACL. | `list(string)` | n/a | yes |
+| <a name="input_policy"></a> [policy](#input\_policy) | (Required) CloudTrails policy to create. | `any` | `null` | no |
+| <a name="input_rule"></a> [rule](#input\_rule) | (Optional) Rule blocks used to identify the web requests that you want to allow, block, or count. | `any` | n/a | yes |
+| <a name="input_scope"></a> [scope](#input\_scope) | (Required) Specifies whether this is for an AWS CloudFront distribution or for a regional application | `list(string)` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Map of key-value pairs to associate with the resource. | `list(map(string))` | `null` | no |
+| <a name="input_visibility_config"></a> [visibility\_config](#input\_visibility\_config) | (Required) Defines and enables Amazon CloudWatch metrics and web request sample collection. | `list(map(string))` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_aws_wafv2_arn"></a> [aws\_wafv2\_arn](#output\_aws\_wafv2\_arn) | The ARN of the WAF WebACL. |
+| <a name="output_aws_wafv2_capacity"></a> [aws\_wafv2\_capacity](#output\_aws\_wafv2\_capacity) | Web ACL capacity units (WCUs) currently being used by this web ACL. |
+| <a name="output_aws_wafv2_id"></a> [aws\_wafv2\_id](#output\_aws\_wafv2\_id) | The ID of the WAF WebACL. |
+| <a name="output_aws_wafv2_tags_all"></a> [aws\_wafv2\_tags\_all](#output\_aws\_wafv2\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
+<!-- END_TF_DOCS -->
