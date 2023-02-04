@@ -394,7 +394,7 @@ resource "aws_wafv2_web_acl" "this" {
               type     = lookup(regex_pattern_set_reference_statement.value["text_transformation"], "type")
             }
           }
-      }
+        }
 
         dynamic "and_statement" {
           for_each = lookup(rule.value, "and_statement", null) == null ? [] : [lookup(rule.value, "and_statement")]
