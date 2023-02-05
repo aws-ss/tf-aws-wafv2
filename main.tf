@@ -71,10 +71,33 @@ resource "aws_wafv2_web_acl" "this" {
             vendor_name = lookup(managed_rule_group_statement.value, "vendor_name", "AWS")
             version     = lookup(managed_rule_group_statement.value, "version", null)
 
-            dynamic "excluded_rule" {
-              for_each = lookup(managed_rule_group_statement.value, "excluded_rule", null) == null ? [] : lookup(managed_rule_group_statement.value, "excluded_rule")
+            dynamic "rule_action_override" {
+              for_each = lookup(managed_rule_group_statement.value, "rule_action_override", null) == null ? {} : lookup(managed_rule_group_statement.value, "rule_action_override")
+              iterator = rule_action_override
               content {
-                name = excluded_rule.value
+                name = rule_action_override.value
+                action_to_use {
+                  dynamic "allow" {
+                    for_each = rule_action_override.key == "allow" ? [1] : []
+                    content {}
+                  }
+                  dynamic "block" {
+                    for_each = rule_action_override.key == "block" ? [1] : []
+                    content {}
+                  }
+                  dynamic "captcha" {
+                    for_each = rule_action_override.key == "captcha" ? [1] : []
+                    content {}
+                  }
+                  #                  dynamic "challenge" {
+                  #                    for_each = rule_action_override.key == "challenge" ? [1] : []
+                  #                    content {}
+                  #                  }
+                  dynamic "count" {
+                    for_each = rule_action_override.key == "count" ? [1] : []
+                    content {}
+                  }
+                }
               }
             }
 
