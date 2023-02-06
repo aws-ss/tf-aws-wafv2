@@ -1,0 +1,63 @@
+# https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchStatement.html
+policy:
+  - name: "WebACL01"
+    description: ~
+    scope: "REGIONAL"
+    default_action: "block"
+    rule:
+      name: "ByteMatchRule01"
+      priority: 10
+      action: "count"
+      byte_match_statement:
+        field_to_match:
+#          query_string: {}
+#          method: {}
+#          body: {}
+#          all_query_arguments: {}
+          uri_path: {}
+        positional_constraint: "CONTAINS"
+        search_string: "/test"
+        text_transformation:
+          priority: 20
+          type: "URL_DECODE"
+      visibility_config:
+        cloudwatch_metrics_enabled: false
+        metric_name: "cloudwatch_metric_name"
+        sampled_requests_enabled: false
+    visibility_config:
+      cloudwatch_metrics_enabled: false
+      metric_name: "cloudwatch_metric_name1"
+      sampled_requests_enabled: false
+    tags:
+      Team: Security
+      Owner: Security
+
+  - name: "WebACL02"
+    description: ~
+    scope: "REGIONAL"
+    default_action: "allow"
+    rule:
+      name: "ByteMatchRule01"
+      priority: 10
+      action: "block"
+      byte_match_statement:
+        field_to_match:
+#          single_query_argument:
+#             name: ""
+          single_header:
+            name: "host"
+        positional_constraint: "EXACTLY"
+        search_string: "test.com"
+        text_transformation:
+          priority: 20
+          type: "NONE"
+      visibility_config:
+        cloudwatch_metrics_enabled: false
+        metric_name: "cloudwatch_metric_name"
+        sampled_requests_enabled: false
+    visibility_config:
+      cloudwatch_metrics_enabled: false
+      metric_name: "cloudwatch_metric_name1"
+      sampled_requests_enabled: false
+    tags:
+      Team: Security

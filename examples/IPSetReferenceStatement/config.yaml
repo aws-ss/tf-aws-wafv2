@@ -1,0 +1,44 @@
+# https://docs.aws.amazon.com/ko_kr/waf/latest/APIReference/API_IPSetReferenceStatement.html
+policy:
+  - name: "WebACL01"
+    description: ~
+    scope: "REGIONAL"
+    default_action: "block"
+    rule:
+      name: "IPSetReferenceRule01"
+      priority: 10
+      action: "count"
+      ip_set_reference_statement:
+        arn: ""
+      visibility_config:
+        cloudwatch_metrics_enabled: false
+        metric_name: "cloudwatch_metric_name"
+        sampled_requests_enabled: false
+    visibility_config:
+      cloudwatch_metrics_enabled: false
+      metric_name: "cloudwatch_metric_name1"
+      sampled_requests_enabled: false
+    tags:
+      Team: Security
+      Owner: Security
+
+  - name: "WebACL02"
+    description: ~
+    scope: "REGIONAL"
+    default_action: "allow"
+    rule:
+      name: "IPSetReferenceRule01"
+      priority: 10
+      action: "block"
+      ip_set_reference_statement:
+        arn: ""
+      visibility_config:
+        cloudwatch_metrics_enabled: false
+        metric_name: "cloudwatch_metric_name"
+        sampled_requests_enabled: false
+    visibility_config:
+      cloudwatch_metrics_enabled: false
+      metric_name: "cloudwatch_metric_name1"
+      sampled_requests_enabled: false
+    tags:
+      Team: Security
