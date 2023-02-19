@@ -1,4 +1,4 @@
-# tf-aws-cloudtrail
+# tf-aws-wafv2
 
 A Terraform module that creates an AWS WAFv2 (using YAML).
 
