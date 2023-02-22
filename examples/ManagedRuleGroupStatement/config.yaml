@@ -13,7 +13,7 @@ policy:
         vendor_name: "AWS"
         # Deprecated - excluded_rule: ["NoUserAgent_HEADER", "UserAgent_BadBots_HEADER"]
         rule_action_override:
-          block: "NoUserAgent_HEADER",
+          block: "NoUserAgent_HEADER"
           count: "UserAgent_BadBots_HEADER"
       visibility_config:
         cloudwatch_metrics_enabled: false
@@ -38,7 +38,7 @@ policy:
       managed_rule_group_statement:
         name: "AWSManagedRulesCommonRuleSet"
         vendor_name: "AWS"
-        # Deprecated- excluded_rule: ["UserAgent_BadBots_HEADER"]
+        # Deprecated - excluded_rule: ["UserAgent_BadBots_HEADER"]
         rule_action_override:
           count: "UserAgent_BadBots_HEADER"
       visibility_config:
