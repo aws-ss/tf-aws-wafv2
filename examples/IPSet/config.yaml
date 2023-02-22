@@ -1,0 +1,23 @@
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_ip_set
+policy:
+  - name: "IPSet01"
+    description: ~
+    scope: "REGIONAL"
+    ip_address_version: "IPV4"
+    addresses:
+      - "1.1.1.1/32"
+    tags:
+      Team: Security
+      Owner: Security
+
+  - name: "IPSet02"
+    description: ~
+    # if you want to set "CLOUDFRONT", you must set to region: "us-east-1"
+    scope: "REGIONAL"
+    ip_address_version: "IPV6"
+    addresses:
+      - "2.2.2.2/32"
+      - "3.3.3.3/32"
+    tags:
+      Team: Security
+      Owner: Security
