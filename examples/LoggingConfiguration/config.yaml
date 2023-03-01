@@ -1,0 +1,38 @@
+# https://docs.aws.amazon.com/waf/latest/APIReference/API_LoggingConfiguration.html
+policy:
+  - log_destination_configs: ""
+    resource_arn: ""
+    redacted_fields:
+#      single_header:
+#        name: "Host"
+#      query_string: {}
+#      method: {}
+      uri_path: {}
+    logging_filter:
+#      default_behavior: "KEEP"
+      default_behavior: "DROP"
+      filter:
+        - behavior: "KEEP"
+          requirement: "MEETS_ANY"
+          condition:
+            - action_condition:
+                action: "COUNT"
+            - action_condition:
+                action: "BLOCK"
+#            - action_condition:
+#                action: "ALLOW"
+#            - action_condition:
+#                action: "CHALLENGE"
+#            - action_condition:
+#                action: "CAPTCHA"
+#            - action_condition:
+#                action: "EXCLUDED_AS_COUNT"
+        - behavior: "DROP"
+          requirement: "MEETS_ALL"
+          condition:
+            - action_condition:
+                action: "COUNT"
+#            - label_name_condition:
+#                label_name: ""
+
+
