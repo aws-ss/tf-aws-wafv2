@@ -34,5 +34,3 @@ policy:
                 action: "COUNT"
 #            - label_name_condition:
 #                label_name: ""
-
-
