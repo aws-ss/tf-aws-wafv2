@@ -15,6 +15,9 @@ policy:
         rule_action_override:
           block: "NoUserAgent_HEADER"
           count: "UserAgent_BadBots_HEADER"
+        scope_down_statement:
+          geo_match_statement:
+            country_codes: [ "CN" ]
       visibility_config:
         cloudwatch_metrics_enabled: false
         metric_name: "cloudwatch_metric_name"
